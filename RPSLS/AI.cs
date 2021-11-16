@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace RPSLS
 {
-    internal class AI
+    public class AI : Player_Form
     {
+        public AI(string name, int score)
+        {
+            this.name = name;
+            this.score = score;
+            Console.WriteLine("{0}'s score is {1}", name, score);
+        }
     }
 }
