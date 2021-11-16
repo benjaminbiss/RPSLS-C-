@@ -12,7 +12,6 @@ namespace RPSLS
         {
             this.name = name;
             this.score = score;
-            Console.WriteLine("{0}'s score is {1}", name, score);
         }
     }
 }

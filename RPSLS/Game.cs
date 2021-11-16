@@ -13,6 +13,10 @@ namespace RPSLS
         Human Player1 = new Human("player1", 0);
         Human Player2 = new Human("player2", 0);
         AI Bot = new AI("AI", 0);
+        public int Player1Gesture;
+        public int Player2Gesture;
+        public int AIGesture;
+        private readonly Random _random = new Random();
         
         public Game(bool UseAI, int rounds)
         {
@@ -27,6 +31,10 @@ namespace RPSLS
             RoundCount();
             StartGame();
             DisplayWinner();
+        }
+        public int BotGesture(int min, int max)
+        {
+            return _random.Next(min, max);
         }
         public void DisplayWelcome()
         {
@@ -60,12 +68,163 @@ namespace RPSLS
             Player1.name = Console.ReadLine();
             if (UseAI == false)
             {
-                Console.WriteLine("Player1, enter your name: ");
+                Console.WriteLine("Player2, enter your name: ");
                 Player2.name = Console.ReadLine();
             }
-            while (Player1.score/rounds>.5 && Player2.score / rounds > .5 && Bot.score / rounds > .5)
+            while (Player1.score / rounds <= .5 && Player2.score / rounds <= .5 && UseAI == false)
             {
-
+                Player1.ChooseGesture();
+                Player1Gesture = int.Parse(Console.ReadLine()) + 1;
+                Player2.ChooseGesture();
+                Player2Gesture = int.Parse(Console.ReadLine()) + 1;
+                //Log player selections
+                if (Player1Gesture == Player2Gesture)
+                {
+                    Console.WriteLine("Tie!");
+                }
+                else
+                {
+                    switch (Player1Gesture)
+                    {
+                        case 1:
+                            if (Player2Gesture == 3 || Player2Gesture == 4)
+                            {
+                                Player1.IncreaseScore();
+                                Console.WriteLine("Player1 won this round!");
+                            }
+                            else
+                            {
+                                Player2.IncreaseScore();
+                                Console.WriteLine("Player2 won this round!");
+                            }
+                            break;
+                        case 2:
+                            if (Player2Gesture == 1 || Player2Gesture == 5)
+                            {
+                                Player1.IncreaseScore();
+                                Console.WriteLine("Player1 won this round!");
+                            }
+                            else
+                            {
+                                Player2.IncreaseScore();
+                                Console.WriteLine("Player2 won this round!");
+                            }
+                            break;
+                        case 3:
+                            if (Player2Gesture == 2 || Player2Gesture == 4)
+                            {
+                                Player1.IncreaseScore();
+                                Console.WriteLine("Player1 won this round!");
+                            }
+                            else
+                            {
+                                Player2.IncreaseScore();
+                                Console.WriteLine("Player2 won this round!");
+                            }
+                            break;
+                        case 4:
+                            if (Player2Gesture == 2 || Player2Gesture == 5)
+                            {
+                                Player1.IncreaseScore();
+                                Console.WriteLine("Player1 won this round!");
+                            }
+                            else
+                            {
+                                Player2.IncreaseScore();
+                                Console.WriteLine("Player2 won this round!");
+                            }
+                            break;
+                        case 5:
+                            if (Player2Gesture == 3 || Player2Gesture == 1)
+                            {
+                                Player1.IncreaseScore();
+                                Console.WriteLine("Player1 won this round!");
+                            }
+                            else
+                            {
+                                Player2.IncreaseScore();
+                                Console.WriteLine("Player2 won this round!");
+                            }
+                            break;
+                    }
+                }
+            }
+            while (Player1.score / rounds <= .5 && Bot.score / rounds <= .5 && UseAI==true)
+            {
+                Player1.ChooseGesture();
+                Player1Gesture = int.Parse(Console.ReadLine()) + 1;
+                AIGesture = BotGesture(1, 5);
+                //Log player selections
+                if (Player1Gesture == AIGesture)
+                {
+                    Console.WriteLine("Tie!");
+                }
+                else
+                {
+                    switch (Player1Gesture)
+                    {
+                        case 1:
+                            if (AIGesture == 3 || AIGesture == 4)
+                            {
+                                Player1.IncreaseScore();
+                                Console.WriteLine("Player1 won this round!");
+                            }
+                            else
+                            {
+                                Bot.IncreaseScore();
+                                Console.WriteLine("Player2 won this round!");
+                            }
+                            break;
+                        case 2:
+                            if (AIGesture == 1 || AIGesture == 5)
+                            {
+                                Player1.IncreaseScore();
+                                Console.WriteLine("Player1 won this round!");
+                            }
+                            else
+                            {
+                                Bot.IncreaseScore();
+                                Console.WriteLine("Player2 won this round!");
+                            }
+                            break;
+                        case 3:
+                            if (AIGesture == 2 || AIGesture == 4)
+                            {
+                                Player1.IncreaseScore();
+                                Console.WriteLine("Player1 won this round!");
+                            }
+                            else
+                            {
+                                Bot.IncreaseScore();
+                                Console.WriteLine("Player2 won this round!");
+                            }
+                            break;
+                        case 4:
+                            if (AIGesture == 2 || AIGesture == 5)
+                            {
+                                Player1.IncreaseScore();
+                                Console.WriteLine("Player1 won this round!");
+                            }
+                            else
+                            {
+                                Bot.IncreaseScore();
+                                Console.WriteLine("Player2 won this round!");
+                            }
+                            break;
+                        case 5:
+                            if (AIGesture == 3 || AIGesture == 1)
+                            {
+                                Player1.IncreaseScore();
+                                Console.WriteLine("Player1 won this round!");
+                            }
+                            else
+                            {
+                                Bot.IncreaseScore();
+                                Console.WriteLine("Player2 won this round!");
+                            }
+                            break;
+                    }
+                }
             }
         }
         public void DisplayWinner()
