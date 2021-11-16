@@ -14,5 +14,10 @@ namespace RPSLS
             this.score = score;
             Console.WriteLine("{0}'s score is {1}", name, score);
         }
+        public void ChooseGesture()
+        {
+            Console.WriteLine(this.name, "select your gesture:");
+            Console.WriteLine("1, Rock\n2, Paper\n3, Scissors\n4, Lizard\n5, Spock");
+        }
     }
 }

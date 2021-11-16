@@ -34,7 +34,7 @@ namespace RPSLS
         }
         public void DisplayRules()
         {
-            Console.WriteLine("The game RPSLS is just like Rock Paper Scissors, however there are now five options to choose from!\nRules:\nRock beats Scissor and Lizard\nPaper beats Rock and Spock\nScissor beats Paper and Lizard\nLizard beats Spock and Paper\nSpock beats Scissors and Rock")
+            Console.WriteLine("The game RPSLS is just like Rock Paper Scissors, however there are now five options to choose from!\nRules:\nRock beats Scissor and Lizard\nPaper beats Rock and Spock\nScissor beats Paper and Lizard\nLizard beats Spock and Paper\nSpock beats Scissors and Rock");
         }
         public void GetMode()
         {
@@ -56,11 +56,32 @@ namespace RPSLS
         }
         public void StartGame()
         {
+            Console.WriteLine("Player1, enter your name: ");
+            Player1.name = Console.ReadLine();
+            if (UseAI == false)
+            {
+                Console.WriteLine("Player1, enter your name: ");
+                Player2.name = Console.ReadLine();
+            }
+            while (Player1.score/rounds>.5 && Player2.score / rounds > .5 && Bot.score / rounds > .5)
+            {
 
+            }
         }
         public void DisplayWinner()
         {
-            Console.WriteLine();
+            if (Player1.score / rounds > .5)
+            {
+                Console.WriteLine("Player1 is the winner!");
+            }
+            else if (Player2.score / rounds > .5)
+            {
+                Console.WriteLine("Player2 is the winner!");
+            }
+            else
+            {
+                Console.WriteLine("The AI is the winner!");
+            }
         }
     }
 }
