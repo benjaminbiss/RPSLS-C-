@@ -10,6 +10,9 @@ namespace RPSLS
     {
         public bool UseAI;
         public int rounds;
+        Human Player1 = new Human("player1", 0);
+        Human Player2 = new Human("player2", 0);
+        AI Bot = new AI("AI", 0);
         
         public Game(bool UseAI, int rounds)
         {
@@ -18,7 +21,12 @@ namespace RPSLS
         }
         public void RunGame()
         {
-
+            DisplayWelcome();
+            DisplayRules();
+            GetMode();
+            RoundCount();
+            StartGame();
+            DisplayWinner();
         }
         public void DisplayWelcome()
         {
@@ -40,6 +48,15 @@ namespace RPSLS
             {
                 UseAI = false;
             }
+        }
+        public void RoundCount()
+        {
+            Console.WriteLine("How many rounds would you like to play?\n");
+            rounds = int.Parse(Console.ReadLine());
+        }
+        public void StartGame()
+        {
+
         }
         public void DisplayWinner()
         {
