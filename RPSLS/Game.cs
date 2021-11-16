@@ -77,6 +77,8 @@ namespace RPSLS
                 Player1Gesture = int.Parse(Console.ReadLine()) + 1;
                 Player2.ChooseGesture();
                 Player2Gesture = int.Parse(Console.ReadLine()) + 1;
+                Console.WriteLine(Player1.score);
+                Console.WriteLine(Player2.score);
                 //Log player selections
                 if (Player1Gesture == Player2Gesture)
                 {
@@ -154,6 +156,8 @@ namespace RPSLS
                 Player1.ChooseGesture();
                 Player1Gesture = int.Parse(Console.ReadLine()) + 1;
                 AIGesture = BotGesture(1, 5);
+                Console.WriteLine(Player1.score);
+                Console.WriteLine(Bot.score);
                 //Log player selections
                 if (Player1Gesture == AIGesture)
                 {
